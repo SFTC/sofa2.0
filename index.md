@@ -18,8 +18,8 @@
 
 ### 环境要求
 
-Node Version 10.10 +，由于使用了fs一些新方法，之后会考虑替换方法降低版本要求；
-Git 已安装且已登录；
+Node Version 10.10 +，由于使用了fs一些新方法，之后会考虑替换方法降低版本要求；  
+Git 已安装且已登录，Sofa强依赖于Git功能；  
 
 ### 安装
 
@@ -148,15 +148,40 @@ sofa add component
 sofa add micro
 ```
 
+### 本地模板代码
+
+Sofa除了可以使用模板库中的远程模板进行代码创建，也提供了本地模板模式，即用户在创建模块、组件时，可以直接使用本地已有的代码直接创建，仅需为本地模板正确配置sofa.template.config.js文件即可，当然，如果此模板本由sofa创建，那么它不需任何修改即可直接被当做本地模板使用，以辅助用户完成快速开发。
+
+```bash
+sofa create module
+
+? 请选择MODULE (Use arrow keys)
+❯ sofa-module-cv
+  sofa-module-template-example
+  --- 以下为本地模板 ---
+  Success
+  SupplierManage
+```
+
 ## 5.插件
 
 插件部分参见sofa-new-plugins的ReadMe。
 <a href="sofa-plugins">sofa-new-plugins</a>
 
-## 6.独立数据库
+## 6. 模板版本管理
+
+Sofa对其中的模板进行了自动的版本管理，在Create模式下会自动调用最新发布版本的模板，而非模板Git仓库最新代码；  
+
+Sofa使用的是三位版本号，用户update模板，如未指定版本号，会自动在最低版本号+1。  
+
+但是对于Add模式，并未使用版本进行管理，而是直接引入最新代码，主要是考虑到代码引入模式的问题，add本质使用的是Git的submodule模式，并且这个子模块会一直在项目中进行管理，也就是说项目可以方便的更新子模块版本。  
+
+## 7.独立数据库
 
 待完善
 
-## 7.内置模板介绍
+## 8.模板开发原则
 
 待完善
+
+## 9.内置模板介绍
