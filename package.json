@@ -1,0 +1,20 @@
+{
+  "name": "sofa-wiki",
+  "version": "1.0.0",
+  "description": "集优质开发模板&组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bundle exec jekyll serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SFTC/sofa2.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SFTC/sofa2.0/issues"
+  },
+  "homepage": "https://github.com/SFTC/sofa2.0#readme"
+}
