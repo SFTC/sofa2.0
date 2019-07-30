@@ -151,7 +151,7 @@ sofa add micro
 ## 5.插件
 
 插件部分参见sofa-new-plugins的ReadMe。
-<a href="/sofa-plugins">sofa-new-plugins</a>
+<a href="sofa-plugins">sofa-new-plugins</a>
 
 ## 6.独立数据库
 
