@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>sofa-new-plugins | Sofa 2.0</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="sofa-new-plugins" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="集优质开发模板&amp;组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案" />
+<meta property="og:description" content="集优质开发模板&amp;组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案" />
+<link rel="canonical" href="http://localhost:4000/sofa-plugins.html" />
+<meta property="og:url" content="http://localhost:4000/sofa-plugins.html" />
+<meta property="og:site_name" content="Sofa 2.0" />
+<script type="application/ld+json">
+{"description":"集优质开发模板&amp;组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案","@type":"WebPage","url":"http://localhost:4000/sofa-plugins.html","headline":"sofa-new-plugins","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a9a0faa30bdfe804a2f9716643263e0106e3c6a1">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Sofa 2.0</h1>
+      <h2 class="project-tagline">集优质开发模板&组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案</h2>
+      
+        <a href="https://github.com/SFTC/sofa2.0" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="sofa-new-plugins">sofa-new-plugins</h1>
+
+<p>首先为什么叫new-plugins，是由于插件模式的方案讨论了比较多轮，最终使用的方案与前期讨论的差距较大，所以最终叫了new-plugins的名字。</p>
+
+<p>sofa的插件是用以进行除git操作、文件复制以外的文件内容处理的，主要被用在create命令中。sofa内置了一些同步、异步插件，帮助模板开发者快速达成自定义create模式的目的。</p>
+
+<p>需要注意的是，多个插件会按序同步执行。</p>
+
+<h2 id="内置插件">内置插件</h2>
+
+<h3 id="replacekeywordplugin">ReplaceKeywordPlugin</h3>
+
+<p>关键字替换插件</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sofa</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"sofa-new-plugins"</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s2">"sofa-module-cv"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"module"</span><span class="p">,</span>
+  <span class="na">frame</span><span class="p">:</span> <span class="s2">"react"</span><span class="p">,</span>
+  <span class="na">isTs</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="na">isBlank</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">description</span><span class="p">:</span> <span class="s2">"Connect-View 页面模板；"</span><span class="p">,</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">Sofa</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">ReplaceKeywordPlugin</span><span class="p">([</span>
+      <span class="p">{</span>
+        <span class="c1">// 源字符串</span>
+        <span class="na">originStr</span><span class="p">:</span> <span class="s2">"EventManage"</span><span class="p">,</span>
+        <span class="c1">// 目标字符串</span>
+        <span class="na">targetStr</span><span class="p">:</span> <span class="s2">"$$moduleName$$"</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">]),</span>
+    <span class="err">……</span>
+</code></pre></div></div>
+
+<p>传参：替换对儿数组，可以替换多个关键字。</p>
+
+<h3 id="collectparamsplugin">CollectParamsPlugin</h3>
+
+<p>参数收集插件</p>
+
+<p>与用户交互，得到其他参数，插件的参数与inquirer一致即可。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">new</span> <span class="nx">Sofa</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">CollectParamsPlugin</span><span class="p">([</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="s2">"input"</span><span class="p">,</span>
+      <span class="na">message</span><span class="p">:</span> <span class="s2">"请输入module的中文名称"</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">"moduleChineseName"</span><span class="p">,</span>
+      <span class="na">default</span><span class="p">:</span> <span class="s2">"$$moduleName$$"</span>
+    <span class="p">}</span>
+  <span class="p">]),</span>
+</code></pre></div></div>
+
+<h3 id="insertcodeplugin">InsertCodePlugin</h3>
+
+<p>代码生成插件</p>
+
+<p>寻找指定的变量（导出变量，export default均可），在变量之上插入新的数组元素或者Object的键值对。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">new</span> <span class="nx">Sofa</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">InsertCodePlugin</span><span class="p">({</span>
+    <span class="na">filePath</span><span class="p">:</span> <span class="s2">"$$projectRoot$$/src/config/menu.conf.js"</span><span class="p">,</span>
+    <span class="na">findType</span><span class="p">:</span> <span class="s2">"identify"</span><span class="p">,</span>
+    <span class="na">findName</span><span class="p">:</span> <span class="s2">"menu"</span><span class="p">,</span>
+    <span class="na">insertValue</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">key</span><span class="p">:</span> <span class="s2">"$$moduleName$$"</span><span class="p">,</span>
+      <span class="na">icon</span><span class="p">:</span> <span class="s2">"tool"</span>
+    <span class="p">}</span>
+  <span class="p">}),</span>
+  <span class="k">new</span> <span class="nx">Sofa</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">InsertCodePlugin</span><span class="p">({</span>
+    <span class="na">filePath</span><span class="p">:</span> <span class="s2">"$$projectRoot$$/src/config/menu.conf.js"</span><span class="p">,</span>
+    <span class="na">findType</span><span class="p">:</span> <span class="s2">"identify"</span><span class="p">,</span>
+    <span class="na">findName</span><span class="p">:</span> <span class="s2">"messagesMap"</span><span class="p">,</span>
+    <span class="na">insertKey</span><span class="p">:</span> <span class="s2">"$$moduleName$$"</span><span class="p">,</span>
+    <span class="na">insertValue</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="s2">"sofa.config.$$moduleName$$"</span><span class="p">,</span>
+      <span class="na">defaultMessage</span><span class="p">:</span> <span class="s2">"$$moduleChineseName$$"</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="替换字符串">替换字符串</h2>
+
+<p>sofa-new-plugins预置了一种特殊的替换字符串语法，在插件的配置参数中将<script type="math/tex">包裹的变量进行替换，例如在项目'test'中，</script>projectName$$会被替换为test。</p>
+
+<p>下面列出了可被替换的变量名称：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>number</th>
+      <th>name</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>operator</td>
+      <td>操作者</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>email</td>
+      <td>操作者Email</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>operator</td>
+      <td>操作者</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>projectName</td>
+      <td>项目名称</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>moduleName</td>
+      <td>模块名称</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>projectRoot</td>
+      <td>项目路径</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>此外任何其他需要收集的变量信息都可以通过CollectParamsPlugin插件与用户交互进行收集。</p>
+
+<h2 id="用户自定义插件">用户自定义插件</h2>
+
+<p>插件的开发非常简单，在类中实现如下apply方法即可：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">BasePlugin</span> <span class="p">{</span>
+  <span class="cm">/**
+   * 构造函数
+   * @param {*} params 初始化参数
+   */</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">params</span> <span class="o">=</span> <span class="nx">params</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="cm">/**
+   * 核心执行函数
+   * @param {object} files file列表
+   * @param {Sofa} sofaEntity Sofa实体，用以传递Sofa执行参数
+   * @param {function} callback 回调函数，需在执行末尾调用
+   */</span>
+  <span class="nx">apply</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="nx">sofaEntity</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// core code</span>
+    <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">files</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/SFTC/sofa2.0">sofa2.0</a> is maintained by <a href="https://github.com/SFTC">SFTC</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>

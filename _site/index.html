@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Sofa 2.0 | 集优质开发模板&amp;组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Sofa 2.0" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="集优质开发模板&amp;组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案" />
+<meta property="og:description" content="集优质开发模板&amp;组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Sofa 2.0" />
+<script type="application/ld+json">
+{"name":"Sofa 2.0","description":"集优质开发模板&amp;组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案","@type":"WebSite","url":"http://localhost:4000/","headline":"Sofa 2.0","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a9a0faa30bdfe804a2f9716643263e0106e3c6a1">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Sofa 2.0</h1>
+      <h2 class="project-tagline">集优质开发模板&组件库；高效辅助开发工具；可移植性开发环境；全方位高可控代码规范为一体的高效开发解决方案</h2>
+      
+        <a href="https://github.com/SFTC/sofa2.0" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="sofa-20">Sofa 2.0</h1>
+
+<blockquote>
+  <p>对于后台系统，各个页面的相似度高，怎样快速高质量的进行开发？
+优质的页面、组件等怎样的积累方式是有效的、可持续的？
+对于每个系统所共有的部分，怎样跨越框架的屏障，实现一次开发，处处使用？</p>
+</blockquote>
+
+<h2 id="sofa-是什么">Sofa 是什么？</h2>
+
+<ol>
+  <li>
+    <p>一套快速低成本脚手架生成方案;</p>
+  </li>
+  <li>
+    <p>一个优质代码片段积累仓库;</p>
+  </li>
+  <li>
+    <p>多项目代码结构、代码质量管控方案;</p>
+  </li>
+  <li>
+    <p>让所有的优质代码都有稳定的沉淀路径，让所有的代码都有迹可循;</p>
+  </li>
+</ol>
+
+<h2 id="1开始">1.开始</h2>
+
+<h3 id="环境要求">环境要求</h3>
+
+<p>Node Version 10.10 +，由于使用了fs一些新方法，之后会考虑替换方法降低版本要求；
+Git 已安装且已登录；</p>
+
+<h3 id="安装">安装</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 全局安装</span>
+<span class="nb">sudo </span>npm install <span class="nt">--unsafe-perm</span> <span class="nt">-g</span> sofa-scripts
+</code></pre></div></div>
+
+<p>在安装过程中会要求输入数据库连接秘钥，您可以直接使用我们提供的数据库秘钥【43D7E3D3C12AA550BDC2F7448C22F1EBFE92AF3188978D3F076B27F412A9E230C4830F93D28223C7B6E16B34FCBA7846E0ACB9CE0DB6602690448D88DD34BEA1
+】或是，按照后续的教程，使用独立的数据库进行支持；</p>
+
+<p>输入秘钥后，sofa会尝试连接数据库，提示连接成功即可使用。</p>
+
+<h2 id="2-sofa命令全景">2. Sofa命令全景</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> sofa <span class="nt">--help</span>
+
+<span class="c"># output</span>
+Usage: sofa <span class="o">[</span>options] <span class="o">[</span><span class="nb">command</span><span class="o">]</span>
+
+Options:
+  <span class="nt">-h</span>, <span class="nt">--help</span>        output usage information
+
+Commands:
+  init              初始化Sofa
+  <span class="nb">set</span> &lt;assign&gt;      修改/添加 全局设置，sofa <span class="nb">set </span><span class="nv">db</span><span class="o">=</span>sth
+  publish &lt;<span class="nb">type</span><span class="o">&gt;</span>    发布模板到模板库 <span class="nb">type</span> <span class="o">=</span> template | micro
+  update            更新模板（仅自己拥有权限的模板）
+  remove            删除模板（仅自己拥有权限的模板）
+  <span class="nb">ls                </span>显示所有可用模板
+  search <span class="o">[</span>keyword]  搜索模板
+  create &lt;<span class="nb">type</span><span class="o">&gt;</span>     创建代码
+  add &lt;<span class="nb">type</span><span class="o">&gt;</span>        以子模块方式添加微服务（模块）/组件 <span class="nb">type</span> <span class="o">=</span> micro | component
+</code></pre></div></div>
+
+<h2 id="3-创建模板库">3. 创建模板库</h2>
+
+<h3 id="模板要求">模板要求</h3>
+
+<p>【要求一】Sofa中的模板，要求提供标准格式的config文件，如下所示：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// sofa.template.config.js</span>
+
+<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"path"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Sofa</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"sofa-new-plugins"</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// 【必填】模板名称</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s2">"sofa-project-react-ts"</span><span class="p">,</span>
+  <span class="c1">// 【必填】模板类型，支持 project|module|component|micro</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"project"</span><span class="p">,</span>
+  <span class="c1">// 【必填】模板框架，支持 vue|react|react-native|mp|h5</span>
+  <span class="na">frame</span><span class="p">:</span> <span class="s2">"react"</span><span class="p">,</span>
+  <span class="c1">// 【必填】是否使用了typescript进行开发</span>
+  <span class="na">isTs</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="c1">// 【必填】是否是空白模板，仅当空白component时为true</span>
+  <span class="na">isBlank</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="c1">// 【必填】描述，对模板的具体描述</span>
+  <span class="na">description</span><span class="p">:</span>
+    <span class="s2">"通用React项目模板，集成了系统管理、Pass登录等功能，配置后可直接使用，并提供了丰富的module备选模板；"</span><span class="p">,</span>
+  <span class="c1">// project 必填，module路径</span>
+  <span class="na">modulesPath</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">"/src/containers"</span><span class="p">),</span>
+  <span class="c1">// project 必填，组件路径</span>
+  <span class="na">componentsPath</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">"/src/components"</span><span class="p">),</span>
+  <span class="c1">// project 必填，微服务路径</span>
+  <span class="na">microsPath</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">),</span>
+  <span class="c1">// 插件列表，在插件章节会详细介绍</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="c1">// 按照顺序执行各个plugin</span>
+    <span class="k">new</span> <span class="nx">Sofa</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">ReplaceKeywordPlugin</span><span class="p">([</span>
+      <span class="p">{</span>
+        <span class="na">originStr</span><span class="p">:</span> <span class="s2">"sofa-project-react-ts"</span><span class="p">,</span>
+        <span class="na">targetStr</span><span class="p">:</span> <span class="s2">"$$projectName$$"</span> <span class="c1">// $$表示从运行实体中获得</span>
+      <span class="p">}</span>
+    <span class="p">])</span>
+  <span class="p">]</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>由于Sofa的运行是在依赖安装之前，因此配置文件中对外部模块的依赖仅限于node内置模块、Sofa模块；【Todo】</p>
+
+<p>【要求二】模板需以独立的Git仓库形式存在；</p>
+
+<h3 id="发布上传模板">发布上传模板</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>templateDir
+sofa publish template
+</code></pre></div></div>
+
+<p>sofa会自动读取sofa.template.config.js中的设置，并与用户进行二次确认，信息确认完毕后，打Tag，存入数据库。</p>
+
+<h3 id="模板版本管理">模板版本管理</h3>
+
+<p>sofa为每个模板提供了自动的版本管理，借助git tag的功能完成，因此不必担心拉取到的代码为未确认版本；</p>
+
+<h2 id="4生成代码">4.生成代码</h2>
+
+<p>sofa的生成代码是其核心应用命令；生成代码有两种模式，一种是Create模式，一种是Add模式；所谓Create模式，模板将以代码的形式存在，方便使用者在其上进行修改、二次开发；Add模式，模板将以Git子模块的形式存在，不允许修改，但是可以享受功能的自动升级，一般微服务类、组件类推荐使用Add模式；</p>
+
+<h3 id="create-模式">Create 模式</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 以create模式创建项目，会根据用户输入，为用户提供可选的模板</span>
+sofa create project
+
+<span class="c"># 以create模式创建模块</span>
+sofa create module
+
+<span class="c"># 以create模式创建组件</span>
+sofa create component
+
+<span class="c"># 以create模式创建微服务【不推荐】</span>
+sofa create micro
+</code></pre></div></div>
+
+<h3 id="add-模式">Add 模式</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 以add模式引入组件</span>
+sofa add component
+
+<span class="c"># 以add模式引入微服务</span>
+sofa add micro
+</code></pre></div></div>
+
+<h2 id="5插件">5.插件</h2>
+
+<p>插件部分参见sofa-new-plugins的ReadMe。
+<a href="/sofa-plugins">sofa-new-plugins</a></p>
+
+<h2 id="6独立数据库">6.独立数据库</h2>
+
+<p>待完善</p>
+
+<h2 id="7内置模板介绍">7.内置模板介绍</h2>
+
+<p>待完善</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/SFTC/sofa2.0">sofa2.0</a> is maintained by <a href="https://github.com/SFTC">SFTC</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>
